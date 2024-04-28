@@ -88,6 +88,11 @@ Sau đó sửa thành domain của bạn (Ví dụ của mình sẽ là viper-rp
 Ctrl-X sau đó bấm Y và bấm enter tiếp theo để lưu file
 ```
 
+Reboot VPS
+```bash
+reboot
+```
+
 ## Clone Viper Source
 
 ```bash
