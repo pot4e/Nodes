@@ -36,10 +36,10 @@ sudo apt-get install git build-essential curl file nginx certbot python3-certbot
 Mở port firewal
 
 ```bash
-sudo ufw enble
+sudo ufw enable
 ```
 
-Bấm đồng ý hoặc enter gì đó để mở firewal
+Bấm `y` rồi enter để mở firewal
 
 ```bash
 sudo ufw default deny
