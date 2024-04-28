@@ -125,6 +125,11 @@ Với `{address}` nên được thay bằng wallet address bạn đã tạo ở 
 
 Với `{domain}` ở trên bạn sửa ở file `/etc/hostname`
 
+Tạo Validator
+```bash
+viper servicers create-validator $WALLET_ADDRESS
+```
+
 Cập nhật config và thêm persistent peer
 ```bash
 echo $(viper util print-configs) | jq '.tendermint_config.P2P.PersistentPeers = "859674aa64c0ee20ebce8a50e69390698750a65f@mynode1.testnet.vipernet.xyz:26656,eec6c84a7ededa6ee2fa25e3da3ff821d965f94d@mynode2.testnet.vipernet.xyz:26656,81f4c53ccbb36e190f4fc5220727e25c3186bfeb@mynode3.testnet.vipernet.xyz:26656,d53f620caab13785d9db01515b01d6f21ab26d54@mynode4.testnet.vipernet.xyz:26656,e2b1dc002270c8883abad96520a2fe5982cb3013@mynode5.testnet.vipernet.xyz:26656"' | jq . > ~/.viper/config/configuration.json
