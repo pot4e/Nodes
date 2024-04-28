@@ -5,7 +5,9 @@
 # Cấu hình
 
 4 CPUs (or vCPUs)
+
 8 GB RAM
+
 100 GB Disk
 
 # Chuẩn bị
@@ -174,8 +176,6 @@ WantedBy=default.target
 EOF
 ```
 
-Ctrl-X sau đó bấm Y và bấm enter tiếp theo để lưu file
-
 Chạy Viper service
 
 ```bash
@@ -204,7 +204,7 @@ server {
     server_name $HOSTNAME;
 
     location / {
-        try_files $uri $uri/ =404;
+        try_files \$uri \$uri/ =404;
     }
 
     listen [::]:443 ssl ipv6only=on;
