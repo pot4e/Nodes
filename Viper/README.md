@@ -145,7 +145,7 @@ Câu hỏi add non-native nhập: `n` và bấm enter
 viper util gen-geozone
 ```
 
-Bạn có thể xem thử tại [`geo ID`](chains&geoZones/README.md), và xác định VPS mình nằm ở đâu để lấy ID của chỗ đó
+Bạn có thể xem thử tại [`geo ID`](https://github.com/vipernet-xyz/viper-binaries/blob/main/chains&geoZones/README.md), và xác định VPS mình nằm ở đâu để lấy ID của chỗ đó
 
 ### Tạo genesis
 
