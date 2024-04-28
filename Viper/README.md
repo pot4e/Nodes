@@ -186,7 +186,20 @@ WantedBy=default.target
 EOF
 ```
 
-Chạy Viper service
+### Setup Data
+
+```bash
+cd ~/.viper
+rm -rf data
+rm -r viper_evidence.db
+rm -r viper_result.db
+sudo git clone https://github.com/vishruthsk/data.git data
+sudo chown -R root ~/.viper/data
+cd config
+rm addrbook.json
+```
+
+### Chạy Viper service
 
 ```bash
 sudo systemctl daemon-reload
