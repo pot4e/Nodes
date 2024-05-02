@@ -363,3 +363,15 @@ sudo systemctl restart viper
 ```bash
 sudo systemctl stop viper
 ```
+
+## Update binary file
+Trong quá trình diễn ra testnet, team có thể sẽ cập nhật lại binary file để fix các bug tồn tại trong phiên bản trước. 
+Dùng tập lệnh sau để update nhanh binary (Điều kiện: kết nối ssh trên vps, repo `viper-binaries` nằm trong thư mục `~/` 
+
+```bash
+curl -O https://raw.githubusercontent.com/batuoc263/T4E-Nodes/main/Viper/helper/viper_update_binary.sh && sudo chmod +x viper_update_binary.sh
+```
+Sau này, mỗi khi cần update binary, chỉ cần gọi file này
+```bash
+./viper_update_binary.sh
+```
