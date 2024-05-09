@@ -293,9 +293,17 @@ After running stake, wait for 1 blocks and check your validation again.
 If you got this, you are success.
 ![alt text](./p10.png)
 
+Then, restart your viper node
+
+```bash
+sudo systemctl restart viper.service
+```
+
 # Additionall
 
 Because the DYM node will close when you close terminal session. to keep the section remaining. Please using tmux or screen. 
+
+
 
 
 
