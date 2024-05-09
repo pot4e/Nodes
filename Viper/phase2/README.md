@@ -2,9 +2,7 @@
 
 ![alt text](https://github.com/pot4e/Nodes/blob/main/Viper/viper-private.jpg?raw=true)
 
-This document airm to help viper node running to run viper phase 2
-
-This documenttion will guild you install new DYM node in both cases includes same with Viper node and seperate VPS.
+The documentation will guide you through the installation of a new DYM node. It covers both scenarios: setting up a DYM node alongside an existing Viper node and setting up a separate VPS for the DYM node
 
 # Preparation
 
@@ -92,7 +90,7 @@ DA        <network> | Address used to publish data onchain to the DA network
 
 ## DYM Funding
 
-In Dymension's discord, please fund the Dymension Hub addresses in the froopyland-faucet channel with the following command as an example:
+In Dymension's discord, please fund the Dymension Hub addresses in the `froopyland-faucet` channel with the following command as an example:
 
 ```bash
 $request <dym-address>
@@ -294,6 +292,10 @@ cat ~/.viper/config/geozone.json
 After running stake, wait for 1 blocks and check your validation again. 
 If you got this, you are success.
 ![alt text](./p10.png)
+
+# Additionall
+
+Because the DYM node will close when you close terminal session. to keep the section remaining. Please using tmux or screen. 
 
 
 
