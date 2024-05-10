@@ -181,7 +181,7 @@ roller config set rollapp-rpc-port 6969
 
 ### Change for 26656
 
-Open the file `~/.roller/rollapp/config/config.toml` and find if there are any port number 26656, please change to any port.
+Open the file `~/.roller/rollapp/config/config.toml` and find if there are any port number 26656, please change to any port. please, enter a port number greater than 65536
 
 ```bash
 nano ~/.roller/rollapp/config/config.toml
