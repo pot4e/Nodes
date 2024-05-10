@@ -159,9 +159,9 @@ Find and replace:
 
 wget https://github.com/dymensionxyz/go-relayer/releases/download/v0.3.1-v2.5.2-relayer/Cosmos.Relayer_0.3.1-v2.5.2-relayer_linux_amd64.tar.gz
 
-tar -xvf Cosmos.Relayer_0.3.1-v2.5.2-relayer_linux_arm64.tar.gz
+tar -xvf Cosmos.Relayer_0.3.1-v2.5.2-relayer_linux_amd64.tar.gz
 
-mv Cosmos\ Relayer_0.3.1-v2.5.2-relayer_linux_arm64/rly /usr/local/bin/roller_bins/
+mv Cosmos\ Relayer_0.3.1-v2.5.2-relayer_linux_amd64/rly /usr/local/bin/roller_bins/
 ```
 Then running again
 
