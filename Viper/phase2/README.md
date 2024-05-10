@@ -303,7 +303,27 @@ sudo systemctl restart viper.service
 
 Because the DYM node will close when you close terminal session. to keep the section remaining. Please using tmux or screen. 
 
+If you're running with `Linux` system,you can run as service.
 
+To load the rollapp services, use the following command:
+```bash
+roller services load
+```
+
+This command should return:
+```bash
+💈 Services 'sequencer', 'da-light-client' and 'relayer' been loaded successfully. To start them, use 'sudo systemctl start <service>'.
+```
+
+then check the status
+```bash
+sudo systemctl status da-light-client
+sudo systemctl status sequencer
+sudo systemctl status relayer
+```
+
+The status should be active (running) for all services.
+![alt text](./p11.png)
 
 
 
