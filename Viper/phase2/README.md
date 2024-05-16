@@ -302,10 +302,7 @@ sudo systemctl restart viper.service
 # Additionall
 
 Because the DYM node will close when you close terminal session. to keep the section remaining. Please using tmux or screen. 
-
-
-
-
+`
 
 
 
