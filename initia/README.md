@@ -178,5 +178,5 @@ then reboot to update the limit.
 
 After reboot, check it again
 
-![os](./images/limit.png)
+![os](./images/limit2.png)
 
