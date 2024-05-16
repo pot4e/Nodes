@@ -60,6 +60,33 @@ Build binaries
 
 ```bash
 make build
+make install
+```
+
+After install successfully, check the initiad version
+
+```bash
+initiad version
+```
+if you encounter with `initiad not found`, 
+
+Adding this under `.bashrc` file
+
+```bash 
+
+nano ~/.bashrc
+```
+
+then add this in the end of file. 
+
+```bash
+export PATH=$PATH:$(go env GOBIN):$(go env GOPATH)/bin
+```
+
+Finally, reload the file again
+
+```bash
+source ~/.bashrc
 ```
 
 # Set up Enviroment
