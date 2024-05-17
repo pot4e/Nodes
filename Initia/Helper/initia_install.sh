@@ -115,6 +115,8 @@ initiad tendermint unsafe-reset-all --home $HOME/.initia --keep-addr-book
 
 curl -o - -L $SNAPSHOT_URL | lz4 -c -d - | tar -x -C $HOME/.initia
 
+[[ -f $HOME/.initia/data/upgrade-info.json ]] && cp $HOME/.initia/data/upgrade-info.json $HOME/.initia/cosmovisor/genesis/upgrade-info.json
+
 sudo systemctl start initia
 
 echo '=============== SETUP FINISHED ==================='
