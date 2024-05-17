@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source <(curl -s https://raw.githubusercontent.com/batuoc263/T4E-Nodes/main/Common/common.sh)
+source <(curl -s https://raw.githubusercontent.com/pot4e/Nodes/main/Common/common.sh)
 
 printHeader
 
