@@ -1,10 +1,14 @@
 #!/bin/bash
 
-source <(curl -s https://raw.githubusercontent.com/pot4e/Nodes/main/Common/common.sh)
+source <(curl -s https://raw.githubusercontent.com/batuoc263/T4E-Nodes/main/Common/common.sh)
 
 printHeader
 
 read -r -p "Enter node name: " MONIKER
+
+echo -e "T4E recommends getting the snapshot link at bwarelabs."
+echo -e "URL: ${CYAN}https://bwarelabs.com/snapshots/initia${NC}"
+read -r -p "Paste snapshot url: " SNAPSHOT_URL
 
 CHAIN_ID="initiation-1"
 BINARY_NAME="initiad"
@@ -30,10 +34,54 @@ source .bash_profile
 
 printCyan "3. Downloading and building binaries" && sleep 1
 
+# Clone project repository
+cd $HOME
+rm -rf initia
 git clone https://github.com/initia-labs/initia.git
 cd initia
 git checkout v0.2.14
-make install
+
+# Build binaries
+make build
+
+# Prepare binaries for Cosmovisor
+mkdir -p $HOME/.initia/cosmovisor/genesis/bin
+mv build/initiad $HOME/.initia/cosmovisor/genesis/bin/
+rm -rf build
+
+# Create application symlinks
+sudo ln -s $HOME/.initia/cosmovisor/genesis $HOME/.initia/cosmovisor/current -f
+sudo ln -s $HOME/.initia/cosmovisor/current/bin/initiad /usr/local/bin/initiad -f
+
+printCyan "4. Install Cosmovisor and Create a service" && sleep 1
+
+# Download and install Cosmovisor
+go install cosmossdk.io/tools/cosmovisor/cmd/cosmovisor@v1.5.0
+
+# Create service
+sudo tee /etc/systemd/system/initia.service > /dev/null << EOF
+[Unit]
+Description=initia node service
+After=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(which cosmovisor) run start
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+Environment="DAEMON_HOME=$HOME/.initia"
+Environment="DAEMON_NAME=initiad"
+Environment="UNSAFE_SKIP_BACKUP=true"
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:$HOME/.initia/cosmovisor/current/bin"
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo systemctl daemon-reload
+sudo systemctl enable initia.service
+
+printCyan "5. Initialize the node" && sleep 1
 
 initiad config chain-id $CHAIN_ID
 initiad config set client keyring-backend test
@@ -62,31 +110,12 @@ sed -i -e "s/prometheus = false/prometheus = true/" $HOME/.initia/config/config.
 sed -i -e "s/^indexer *=.*/indexer = \"null\"/" $HOME/.initia/config/config.toml
 sed -i 's|^prometheus *=.*|prometheus = true|' $HOME/.initia/config/config.toml
 
-printCyan "4. Starting service and synchronization" && sleep 1
-
-sudo tee /etc/systemd/system/initiad.service > /dev/null <<EOF
-[Unit]
-Description=Initia node
-After=network-online.target
-[Service]
-User=$USER
-WorkingDirectory=$HOME/.initia
-ExecStart=$(which initiad) start --home $HOME/.initia
-Restart=on-failure
-RestartSec=5
-LimitNOFILE=65535
-[Install]
-WantedBy=multi-user.target
-EOF
-
-sudo systemctl daemon-reload
-sudo systemctl enable initiad.service
 
 initiad tendermint unsafe-reset-all --home $HOME/.initia --keep-addr-book
 
-curl -o - -L https://snapshots.nodes.guru/initia/latest_snapshot.tar.lz4 | lz4 -c -d - | tar -x -C $HOME/.initia
+curl -o - -L $SNAPSHOT_URL | lz4 -c -d - | tar -x -C $HOME/.initia
 
-sudo systemctl start initiad
+sudo systemctl start initia
 
 echo '=============== SETUP FINISHED ==================='
 echo -e "Check logs:"
