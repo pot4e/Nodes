@@ -308,7 +308,20 @@ curl -L https://snapshots.t4e.xyz/initia-testnet/snapshot_latest.tar.lz4 | tar -
 sudo systemctl start initia.service && sudo journalctl -u initia.service -f --no-hostname -o cat
 ```
 
-__image__
+![start](./images/start.png)
+
+# Persistent peers
+
+```bash
+PEERS=d9cef48445358d3d230c95aef3754c0e1005d7c1@37.27.108.81:31656,610fa5564b1413eeb8c2aec79beda50266128bb8@43.157.20.93:26656,f1c162afb153ed64ebe03e4ec36847c1587c5a24@89.163.255.195:33756,62775997caa3d814c5ad91492cb9d411aea91c58@51.38.53.103:26856,f48610351be116d5e01ebee3e9c6c4178091f480@65.109.113.233:25756
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.initia/config/config.toml
+```
+
+Restart
+
+```bash
+sudo systemctl restart initiad && sudo journalctl -u initiad -f
+```
 
 # Validator setting up
 
@@ -340,10 +353,14 @@ To create validator you have to fund the previously created wallet using https:/
 
 To check wallet balance use command below
 
+```bash
 initiad q bank balances $(initiad keys show wallet -a)
+```
 
 ## Create validator
-Please make sure you have adjusted moniker, identity, details, website to match your values.
+
+Please make sure you have adjusted `moniker`, `identity`, `detais`, `website` to match your values.
+
 ```bash
 initiad tx mstaking create-validator \
 --amount 1000000uinit \
@@ -391,6 +408,7 @@ rm -rf build
 ### Step 2: Run oracle
 
 #### create the service
+
 ```bash
 sudo tee /etc/systemd/system/slinky.service > /dev/null <<EOF
 [Unit]
@@ -418,12 +436,14 @@ sudo systemctl start slinky.service
 #### Step 3: Validating Prices
 
 Upon launching the oracle, you should observe successful price retrieval from the provider sources. Additionally, you have the option to execute the test client script available in the Slinky repository by using the command:
+
 ```bash
 make run-oracle-client
 ```
 #### Step 4: Enable Oracle Vote Extension
 
 In order to utilize the Slinky oracle data in the Initia node, the Oracle setting should be enabled in the `config/app.toml` file.
+
 ```bash
 ###############################################################################
 ###                                  Oracle                                 ###
@@ -450,6 +470,7 @@ metrics_enabled = "false"
 ```
 
 #### Step 5: Check the systemd logs
+
 To check service logs use command below:
 ```bash
 journalctl -fu slinky --no-hostname
