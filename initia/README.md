@@ -387,9 +387,9 @@ This guide is only for validator nodes
 Official documentation: https://docs.initia.xyz/run-initia-node/running-initia-node/oracle
 
 
-## Step 1: Clone the Repository and build binaries
+### Step 1: Clone the Repository and build binaries
 
-### Clone repository
+#### Clone repository
 ```bash
 cd $HOME
 rm -rf slinky
@@ -433,14 +433,14 @@ sudo systemctl daemon-reload
 sudo systemctl enable slinky.service
 sudo systemctl start slinky.service
 ```
-#### Step 3: Validating Prices
+### Step 3: Validating Prices
 
 Upon launching the oracle, you should observe successful price retrieval from the provider sources. Additionally, you have the option to execute the test client script available in the Slinky repository by using the command:
 
 ```bash
 make run-oracle-client
 ```
-#### Step 4: Enable Oracle Vote Extension
+### Step 4: Enable Oracle Vote Extension
 
 In order to utilize the Slinky oracle data in the Initia node, the Oracle setting should be enabled in the `config/app.toml` file.
 
