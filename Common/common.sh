@@ -23,7 +23,7 @@ function printHeader {
     printCyan "   ██║        ██║███████╗       ██║   ███████╗██║  ██║██║ ╚═╝ ██║"
     printCyan "   ╚═╝        ╚═╝╚══════╝       ╚═╝   ╚══════╝╚═╝  ╚═╝╚═╝     ╚═╝"
     echo "Docs: https://docs.t4e.xyz"
-    echo "Chanel: https://t.me/t4eresearch"
+    echo "Channel: https://t.me/t4eresearch"
     echo "Github: https://github.com/pot4e"
     printLine && sleep 1
 }
