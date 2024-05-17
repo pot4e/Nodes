@@ -268,6 +268,14 @@ curl -Ls https://snapshots.t4e.xyz/initia-testnet/addrbook.json > $HOME/.initia/
 ```bash
 sed -i -e "s|^seeds *=.*|seeds = \"3f472746f46493309650e5a033076689996c8881@initia-testnet.rpc.t4e.xyz:17959\"|" $HOME/.initia/config/config.toml
 ```
+If the seed peer catch problem then just use persistent peers.
+
+# Persistent peers
+
+```bash
+PEERS=d9cef48445358d3d230c95aef3754c0e1005d7c1@37.27.108.81:31656,610fa5564b1413eeb8c2aec79beda50266128bb8@43.157.20.93:26656,f1c162afb153ed64ebe03e4ec36847c1587c5a24@89.163.255.195:33756,62775997caa3d814c5ad91492cb9d411aea91c58@51.38.53.103:26856,f48610351be116d5e01ebee3e9c6c4178091f480@65.109.113.233:25756
+sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.initia/config/config.toml
+```
 
 # Set minimum gas price
 
@@ -310,18 +318,6 @@ sudo systemctl start initia.service && sudo journalctl -u initia.service -f --no
 
 ![start](./images/start.png)
 
-# Persistent peers
-
-```bash
-PEERS=d9cef48445358d3d230c95aef3754c0e1005d7c1@37.27.108.81:31656,610fa5564b1413eeb8c2aec79beda50266128bb8@43.157.20.93:26656,f1c162afb153ed64ebe03e4ec36847c1587c5a24@89.163.255.195:33756,62775997caa3d814c5ad91492cb9d411aea91c58@51.38.53.103:26856,f48610351be116d5e01ebee3e9c6c4178091f480@65.109.113.233:25756
-sed -i.bak -e "s/^persistent_peers *=.*/persistent_peers = \"$PEERS\"/" $HOME/.initia/config/config.toml
-```
-
-Restart
-
-```bash
-sudo systemctl restart initiad && sudo journalctl -u initiad -f
-```
 
 # Validator setting up
 
