@@ -316,6 +316,8 @@ curl -L https://snapshots.t4e.xyz/initia-testnet/snapshot_latest.tar.lz4 | tar -
 sudo systemctl start initia.service && sudo journalctl -u initia.service -f --no-hostname -o cat
 ```
 
+Successfull Log: 
+
 ![start](./images/start.png)
 
 
@@ -471,6 +473,3 @@ To check service logs use command below:
 ```bash
 journalctl -fu slinky --no-hostname
 ```
-Successfull Log examples:
-
-__image__
