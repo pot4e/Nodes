@@ -467,7 +467,7 @@ client_timeout = "500ms"
 metrics_enabled = "false"
 ```
 
-#### Step 5: Check the systemd logs
+### Step 5: Check the systemd logs
 
 To check service logs use command below:
 ```bash
