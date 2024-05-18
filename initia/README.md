@@ -320,6 +320,15 @@ Successfull Log:
 
 ![start](./images/start.png)
 
+# All script in file
+
+If you are afraid that will make mistake with all script above, you can use the available script from us. 
+
+```bash
+curl -O https://raw.githubusercontent.com/pot4e/Nodes/main/Initia/Helper/initia_install.sh && sudo chmod +x initia_install.sh && ./initia_install.sh
+```
+
+
 
 # Validator setting up
 
