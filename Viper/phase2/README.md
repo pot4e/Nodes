@@ -159,9 +159,9 @@ Find and replace:
 
 wget https://github.com/dymensionxyz/go-relayer/releases/download/v0.3.1-v2.5.2-relayer/Cosmos.Relayer_0.3.1-v2.5.2-relayer_linux_amd64.tar.gz
 
-tar -xvf Cosmos.Relayer_0.3.1-v2.5.2-relayer_linux_arm64.tar.gz
+tar -xvf Cosmos.Relayer_0.3.1-v2.5.2-relayer_linux_amd64.tar.gz
 
-mv Cosmos\ Relayer_0.3.1-v2.5.2-relayer_linux_arm64/rly /usr/local/bin/roller_bins/
+mv Cosmos\ Relayer_0.3.1-v2.5.2-relayer_linux_amd64/rly /usr/local/bin/roller_bins/
 ```
 Then running again
 
@@ -181,7 +181,7 @@ roller config set rollapp-rpc-port 6969
 
 ### Change for 26656
 
-Open the file `~/.roller/rollapp/config/config.toml` and find if there are any port number 26656, please change to any port.
+Open the file `~/.roller/rollapp/config/config.toml` and find if there are any port number 26656, please change to any port. please, enter a port number lower than 65536
 
 ```bash
 nano ~/.roller/rollapp/config/config.toml
@@ -302,7 +302,28 @@ sudo systemctl restart viper.service
 # Additionall
 
 Because the DYM node will close when you close terminal session. to keep the section remaining. Please using tmux or screen. 
-`
+
+If you're running with `Linux` system,you can run as service.
+
+To load the rollapp services, use the following command:
+```bash
+roller services load
+```
+
+This command should return:
+```bash
+💈 Services 'sequencer', 'da-light-client' and 'relayer' been loaded successfully. To start them, use 'sudo systemctl start <service>'.
+```
+
+then check the status
+```bash
+sudo systemctl status da-light-client
+sudo systemctl status sequencer
+sudo systemctl status relayer
+```
+
+The status should be active (running) for all services.
+![alt text](./p11.png)
 
 
 
