@@ -328,8 +328,6 @@ If you are afraid that will make mistake with all script above, you can use the 
 curl -O https://raw.githubusercontent.com/pot4e/Nodes/main/Initia/Helper/initia_install.sh && sudo chmod +x initia_install.sh && ./initia_install.sh
 ```
 
-
-
 # Validator setting up
 
 Official documentation: https://docs.initia.xyz/run-initia-node/running-initia-node/becoming-a-validator
@@ -344,6 +342,7 @@ initiad keys add wallet
 ```
 
 ### OPTION 2 - RECOVER EXISTING WALLET
+
 ```bash
  initiad keys add wallet --recover 
  ```
@@ -397,6 +396,7 @@ Official documentation: https://docs.initia.xyz/run-initia-node/running-initia-n
 ### Step 1: Clone the Repository and build binaries
 
 #### Clone repository
+
 ```bash
 cd $HOME
 rm -rf slinky
