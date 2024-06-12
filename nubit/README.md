@@ -1,6 +1,6 @@
 # Nubit Light Node
 
-![alt text](https://github.com/pot4e/Nodes/blob/main/Viper/viper-private.jpg?raw=true)
+![alt text](https://alpha.nubit.org/static/media/logo.1ddf03d93669039bc623.png)
 
 The documentation will guide you through the installation of a Nubit Light node. It covers both scenarios:
  - running the light node
@@ -23,7 +23,7 @@ https://docs.nubit.org/nubit-da/run-a-node
 export YOUR_WALLET_NAME=leiz-key
 ```
 
-repleace your wallet name with `leiz-key`
+repleace your own wallet name with `leiz-key`
 
 # Install Light Node 
 
@@ -86,7 +86,7 @@ To deleted it:
 rm -r ~/.nubit-light-nubit-alphatestnet-1/keys/
 ```
 
-Please ignore it cmd above, if you would like to keep it. 
+Please ignore it command above, if you would like to keep it. 
 
 ### Import wallet with mnemonic
 
@@ -133,5 +133,3 @@ Then rerun the node
 when you see this, you are successful
 
 ![alt text](./images/res.png)
-
-
