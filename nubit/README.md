@@ -47,8 +47,9 @@ Stop: Just press `ctrl+c`
 Start: 
 
 ```bash
+cd ~/nubit-node
 
-/bin/bash ~/nubit-node/start.sh
+./start.sh
 
 ```
 
@@ -127,7 +128,9 @@ Note: **the name should be the same as the name the import wallet step**
 Then rerun the node
 
 ```bash
-/bin/bash ~/nubit-node/start.sh
+cd ~/nubit-node
+
+./start.sh
 ```
 
 when you see this, you are successful
