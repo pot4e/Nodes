@@ -92,14 +92,14 @@ Please ignore it command above, if you would like to keep it.
 ### Import wallet with mnemonic
 
 ```bash
-nkey add $YOUR_WALLET_NAME --recover --keyring-backend test --node.type $NODE_TYPE --p2p.network $NETWORK
+$HOME/nubit-node/bin/nkey  add $YOUR_WALLET_NAME --recover --keyring-backend test --node.type $NODE_TYPE --p2p.network $NETWORK
 ```
 
 ### Check wallet exists
 
 ```bash
 
-nkey list --p2p.network $NETWORK --node.type $NODE_TYPE
+$HOME/nubit-node/bin/nkey list --p2p.network $NETWORK --node.type $NODE_TYPE
 
 ```
 
