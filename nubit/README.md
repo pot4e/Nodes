@@ -47,15 +47,12 @@ Stop: Just press `ctrl+c`
 Start: 
 
 ```bash
-cd ~/nubit-node
-
-./start.sh
-
+curl -sL1 https://nubit.sh | bash
 ```
 
-If success, you will see result
+If success, you will see result about the `public key` and `auth_key`
 
-![alt text](./images/re1.png)
+![alt text](./images/result.png)
 
 
 ## Change the Wallet key
@@ -130,9 +127,7 @@ Note: **the name should be the same as the name the import wallet step**
 Then rerun the node
 
 ```bash
-cd ~/nubit-node
-
-./start.sh
+curl -sL1 https://nubit.sh | bash
 ```
 
 when you see this, you are successful
