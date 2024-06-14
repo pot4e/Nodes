@@ -87,19 +87,21 @@ To deleted it:
 rm -r ~/.nubit-light-nubit-alphatestnet-1/keys/
 ```
 
-Please ignore it command above, if you would like to keep it. 
+Please ignore it command above, if you would like to keep the key. 
 
 ### Import wallet with mnemonic
 
 ```bash
-nkey add $YOUR_WALLET_NAME --recover --keyring-backend test --node.type $NODE_TYPE --p2p.network $NETWORK
+$HOME/nubit-node/bin/nkey  add $YOUR_WALLET_NAME --recover --keyring-backend test --node.type $NODE_TYPE --p2p.network $NETWORK
 ```
+
+When run it, you are asked to enter the mnemonic phrase
 
 ### Check wallet exists
 
 ```bash
 
-nkey list --p2p.network $NETWORK --node.type $NODE_TYPE
+$HOME/nubit-node/bin/nkey list --p2p.network $NETWORK --node.type $NODE_TYPE
 
 ```
 
