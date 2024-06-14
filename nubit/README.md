@@ -47,10 +47,7 @@ Stop: Just press `ctrl+c`
 Start: 
 
 ```bash
-cd ~/nubit-node
-
-./start.sh
-
+curl -sL1 https://nubit.sh | bash
 ```
 
 If success, you will see result
@@ -130,9 +127,7 @@ Note: **the name should be the same as the name the import wallet step**
 Then rerun the node
 
 ```bash
-cd ~/nubit-node
-
-./start.sh
+curl -sL1 https://nubit.sh | bash
 ```
 
 when you see this, you are successful
