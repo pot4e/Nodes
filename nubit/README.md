@@ -52,7 +52,7 @@ curl -sL1 https://nubit.sh | bash
 
 If success, you will see result about the `public key` and `auth_key`
 
-![alt text](./images/re1.png)
+![alt text](./images/result.png)
 
 
 ## Change the Wallet key
