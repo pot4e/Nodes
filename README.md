@@ -23,3 +23,7 @@ Repo này là một tài nguyên quan trọng, cung cấp hướng dẫn chi ti�
 Với Team T4E, việc chạy và quản lý node sẽ trở nên đơn giản và dễ dàng hơn bao giờ hết. 
 
 Hãy tham gia cùng chúng tôi và khám phá sức mạnh của blockchain!
+
+## Community của chúng tôi
+telegram: https://t.me/t4eresearch
+Nếu như bạn cần sự giúp đỡ muốn giúp đỡ mọi người. Chúng tôi luôn chào đón.
