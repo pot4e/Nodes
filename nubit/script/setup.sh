@@ -103,5 +103,7 @@ else
         rm $FILE
         echo "Nubit-node update complete."
     fi
-    curl -sL1 https://raw.githubusercontent.com/pot4e/Nodes/main/nubit/script/start-up.sh | bash
+    
 fi
+echo "start running..."
+curl -sL1 https://raw.githubusercontent.com/pot4e/Nodes/main/nubit/script/start-up.sh | bash
