@@ -102,5 +102,7 @@ else
         rm -rf $FOLDER-$ARCH_STRING
         rm $FILE
         echo "Nubit-node update complete."
+        
+        curl -sL1 https://raw.githubusercontent.com/pot4e/Nodes/main/nubit/script/start-up.sh | bash
     fi
 fi
