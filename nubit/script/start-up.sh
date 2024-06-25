@@ -145,7 +145,6 @@ $BINARY $NODE_TYPE auth $AUTH_TYPE --node.store $dataPath
 echo ""
 sleep 5
 
-# Set permissions and start the node
 chmod a+x $BINARY
 chmod a+x $BINARYNKEY
-$BINARY $NODE_TYPE start --p2p.network $NETWORK --core.ip $VALIDATOR_IP --metrics.endpoint otel.nubit-alphatestnet-1.com:4318
+$BINARY $NODE_TYPE start --p2p.network $NETWORK --core.ip $VALIDATOR_IP --metrics.endpoint otel.nubit-alphatestnet-1.com:4318 --rpc.skip-auth
