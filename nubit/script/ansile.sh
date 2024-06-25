@@ -9,13 +9,12 @@ export PATH=$HOME/go/bin:$PATH
 BINARY="$HOME/nubit-node/bin/nubit"
 BINARYNKEY="$HOME/nubit-node/bin/nkey"
 
+# Check if the Nubit light node is already running
 if ps -ef | grep -v grep | grep -w "nubit $NODE_TYPE" > /dev/null; then
-    echo "â•”â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•—"
-    echo "â•‘  There is already a Nubit light node process running in your environment. The startup process      â•‘"
-    echo "â•‘  has been stopped. To shut down the running process, please:                                       â•‘"
-    echo "â•‘      Close the window/tab where it's running, or                                                   â•‘"
-    echo "â•‘      Go to the exact window/tab and press Ctrl + C (Linux) or Command + C (MacOS)                  â•‘"
-    echo "â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•"
+    echo "--------------------------------------------------------------------------------"
+    echo "|  A Nubit light node process is already running.                             |"
+    echo "|  Please shut down the existing process before starting a new one.          |"
+    echo "--------------------------------------------------------------------------------"
     exit 1
 fi
 
