@@ -108,6 +108,7 @@ publicKey=$(sed -n 's/.*"key":"\([^"]*\)".*/\1/p' output.txt)
 echo "** PUBKEY **"
 echo $publicKey
 echo ""
+echo $publicKey > $dataPath/public_key.txt
 rm output.txt
 
 # Perform authentication and start the node

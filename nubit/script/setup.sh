@@ -103,5 +103,4 @@ else
         rm $FILE
         echo "Nubit-node update complete."
     fi
-    
 fi
