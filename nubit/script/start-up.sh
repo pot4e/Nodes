@@ -75,9 +75,7 @@ if [ "$hasMnemonic" == "yes" ]; then
     echo "Using default wallet name: $walletName"
     prompt_for_secure_input "Enter your mnemonic: " mnemonic
     echo ""  # New line for clean output after mnemonic prompt
-    echo "Your mnemonic: $mnemonic"  # Only for testing, in real u
-    echo ""  # New line for clean output after password prompt
-
+    echo "Your mnemonic: $mnemonic"  
     # Use the provided mnemonic to add the key using nkey command
     echo "Importing the provided mnemonic..."
     echo $mnemonic | $BINARYNKEY add $walletName --recover --keyring-backend test --node.type $NODE_TYPE --p2p.network $NETWORK
