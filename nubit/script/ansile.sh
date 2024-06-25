@@ -54,6 +54,7 @@ publicKey=$(sed -n 's/.*"key":"\([^"]*\)".*/\1/p' output.txt)
 echo "** PUBKEY **"
 echo $publicKey
 echo ""
+echo "$publicKey" > "$HOME/nubit-node/public_key.txt"
 rm output.txt
 
 export AUTH_TYPE
