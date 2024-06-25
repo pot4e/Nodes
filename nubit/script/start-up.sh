@@ -39,8 +39,14 @@ fi
 cd $HOME/nubit-node
 
 # Prompt the user for input on whether they have an existing mnemonic
-read -p "Do you have an existing mnemonic to use? (yes/no): " hasMnemonic
-
+# Check if stdin is connected to a terminal
+if [ -t 0 ]; then
+  # stdin is connected to a terminal, use normal read
+  read -p "Do you have an existing mnemonic to use? (yes/no): " hasMnemonic
+else
+  # stdin is not connected to a terminal, read from /dev/tty
+  read -p "Do you have an existing mnemonic to use? (yes/no): " hasMnemonic < /dev/tty
+fi
 if [ "$hasMnemonic" == "yes" ]; then
     echo "Using default wallet name: $walletName"
     echo "Enter your mnemonic: "
