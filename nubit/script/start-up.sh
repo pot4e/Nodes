@@ -37,43 +37,38 @@ if [ ! -f $binPath/nubit ] || [ ! -f $binPath/nkey ]; then
 fi
 
 cd $HOME/nubit-node
-
-# Check if the script is running in a way that can handle interactive input
-# Use /dev/tty for reading input if stdin is not connected to a terminal
-
 prompt_for_input() {
-    local prompt_message=$1
-    local input_variable=$2
+    local prompt_message="$1"
+    local input_variable_name="$2"
+    local is_secure="${3:-0}"  # Optional third parameter to handle secure input
 
     if [ -t 0 ]; then
         # stdin is connected to a terminal
-        read -p "$prompt_message" "$input_variable"
+        if [ "$is_secure" -eq 1 ]; then
+            # Secure input (e.g., mnemonic, passwords)
+            read -s -r -p "$prompt_message" "$input_variable_name"
+            echo ""  # New line after secure input
+        else
+            read -r -p "$prompt_message" "$input_variable_name"
+        fi
     else
         # stdin is not connected to a terminal, use /dev/tty
-        read -p "$prompt_message" "$input_variable" < /dev/tty
+        if [ "$is_secure" -eq 1 ]; then
+            read -s -r -p "$prompt_message" "$input_variable_name" < /dev/tty
+            echo ""  # New line after secure input
+        else
+            read -r -p "$prompt_message" "$input_variable_name" < /dev/tty
+        fi
     fi
 }
 
 # Prompt the user for input on whether they have an existing mnemonic
 prompt_for_input "Do you have an existing mnemonic to use? (yes/no): " hasMnemonic
 
-# Function to prompt for secure input (mnemonic, passwords, etc.)
-prompt_for_secure_input() {
-    local prompt_message=$1
-    local input_variable_name=$2
-
-    if [ -t 0 ]; then
-        # stdin is connected to a terminal
-        read -r -p "$prompt_message" "$input_variable_name"
-    else
-        # stdin is not connected to a terminal, use /dev/tty
-        read -r -p "$prompt_message" "$input_variable_name" < /dev/tty
-    fi
-}
 
 if [ "$hasMnemonic" == "yes" ]; then
     echo "Using default wallet name: $walletName"
-    prompt_for_secure_input "Enter your mnemonic: " mnemonic
+    prompt_for_input "Enter your mnemonic: " mnemonic 1
     echo ""  # New line for clean output after mnemonic prompt
     echo "Your mnemonic: $mnemonic"  
     # Use the provided mnemonic to add the key using nkey command
