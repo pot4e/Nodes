@@ -73,8 +73,9 @@ prompt_for_secure_input() {
 
 if [ "$hasMnemonic" == "yes" ]; then
     echo "Using default wallet name: $walletName"
-    echo "Enter your mnemonic: "
-    read  -r mnemonic
+    prompt_for_secure_input "Enter your mnemonic: " mnemonic
+    echo ""  # New line for clean output after mnemonic prompt
+    echo "Your mnemonic: $mnemonic"  # Only for testing, in real u
     echo ""  # New line for clean output after password prompt
 
     # Use the provided mnemonic to add the key using nkey command
