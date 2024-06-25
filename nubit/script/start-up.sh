@@ -46,6 +46,25 @@ prompt_for_input() {
     fi
 }
 
+# Function to download and extract node data
+download_and_extract_data() {
+    local url="https://nubit.sh/nubit-data/lightnode_data.tgz"
+    echo "Downloading light node data from URL: $url"
+    if command -v curl >/dev/null 2>&1; then
+        curl -sLO $url
+    elif command -v wget >/dev/null 2>&1; then
+        wget -qO- $url
+    else
+        echo "Neither curl nor wget are available. Please install one of these and try again."
+        exit 1
+    fi
+
+    mkdir -p "$dataPath"
+    echo "Extracting data. PLEASE DO NOT CLOSE!"
+    tar -xvf lightnode_data.tgz -C "$dataPath"
+    rm lightnode_data.tgz
+}
+
 # =====================
 # Pre-checks and Validations
 # =====================
@@ -69,6 +88,9 @@ if [ ! -f "$binPath/nubit" ] || [ ! -f "$binPath/nkey" ]; then
     exit 1
 fi
 
+# Ensure data directory exists and is populated
+download_and_extract_data
+
 # =====================
 # Node Setup and Initialization
 # =====================
@@ -88,25 +110,6 @@ if [ "$hasMnemonic" == "yes" ]; then
     # Save the mnemonic for future reference (optional)
     echo "$mnemonic" > "$HOME/nubit-node/your_imported_wallet_mnemonic.txt"
 
-    # Proceed with the default setup
-    if [ ! -d "$dataPath" ]; then
-        URL="https://nubit.sh/nubit-data/lightnode_data.tgz"
-        echo "Downloading light node data from URL: $URL"
-        if command -v curl >/dev/null 2>&1; then
-            curl -sLO $URL
-        elif command -v wget >/dev/null 2>&1; then
-            wget -qO- $URL
-        else
-            echo "Neither curl nor wget are available. Please install one of these and try again."
-            exit 1
-        fi
-
-        mkdir -p "$dataPath"
-        echo "Extracting data. PLEASE DO NOT CLOSE!"
-        tar -xvf lightnode_data.tgz -C "$dataPath"
-        rm lightnode_data.tgz
-    fi
-
     echo "Initializing node..."
     $BINARY $NODE_TYPE init --p2p.network $NETWORK > output.txt
     cat output.txt
@@ -114,31 +117,12 @@ if [ "$hasMnemonic" == "yes" ]; then
 else
     echo "User does not have a mnemonic. Proceeding with default setup."
 
-    # Proceed with the default setup
-    if [ ! -d "$dataPath" ]; then
-        URL="https://nubit.sh/nubit-data/lightnode_data.tgz"
-        echo "Downloading light node data from URL: $URL"
-        if command -v curl >/dev/null 2>&1; then
-            curl -sLO $URL
-        elif command -v wget >/dev/null 2>&1; then
-            wget -qO- $URL
-        else
-            echo "Neither curl nor wget are available. Please install one of these and try again."
-            exit 1
-        fi
-
-        mkdir -p "$dataPath"
-        echo "Extracting data. PLEASE DO NOT CLOSE!"
-        tar -xvf lightnode_data.tgz -C "$dataPath"
-        rm lightnode_data.tgz
-
-        echo "Initializing node..."
-        $BINARY $NODE_TYPE init --p2p.network $NETWORK > output.txt
-        mnemonic=$(grep -A 1 "MNEMONIC (save this somewhere safe!!!):" output.txt | tail -n 1)
-        echo "$mnemonic" > "$HOME/nubit-node/mnemonic.txt"
-        cat output.txt
-        rm output.txt
-    fi
+    echo "Initializing node..."
+    $BINARY $NODE_TYPE init --p2p.network $NETWORK > output.txt
+    mnemonic=$(grep -A 1 "MNEMONIC (save this somewhere safe!!!):" output.txt | tail -n 1)
+    echo "$mnemonic" > "$HOME/nubit-node/mnemonic.txt"
+    cat output.txt
+    rm output.txt
 fi
 
 # =====================
