@@ -38,15 +38,25 @@ fi
 
 cd $HOME/nubit-node
 
+# Check if the script is running in a way that can handle interactive input
+# Use /dev/tty for reading input if stdin is not connected to a terminal
+
+prompt_for_input() {
+    local prompt_message=$1
+    local input_variable=$2
+
+    if [ -t 0 ]; then
+        # stdin is connected to a terminal
+        read -p "$prompt_message" "$input_variable"
+    else
+        # stdin is not connected to a terminal, use /dev/tty
+        read -p "$prompt_message" "$input_variable" < /dev/tty
+    fi
+}
+
 # Prompt the user for input on whether they have an existing mnemonic
-# Check if stdin is connected to a terminal
-if [ -t 0 ]; then
-  # stdin is connected to a terminal, use normal read
-  read -p "Do you have an existing mnemonic to use? (yes/no): " hasMnemonic
-else
-  # stdin is not connected to a terminal, read from /dev/tty
-  read -p "Do you have an existing mnemonic to use? (yes/no): " hasMnemonic < /dev/tty
-fi
+prompt_for_input "Do you have an existing mnemonic to use? (yes/no): " hasMnemonic
+
 if [ "$hasMnemonic" == "yes" ]; then
     echo "Using default wallet name: $walletName"
     echo "Enter your mnemonic: "
