@@ -57,6 +57,20 @@ prompt_for_input() {
 # Prompt the user for input on whether they have an existing mnemonic
 prompt_for_input "Do you have an existing mnemonic to use? (yes/no): " hasMnemonic
 
+# Function to prompt for secure input (mnemonic, passwords, etc.)
+prompt_for_secure_input() {
+    local prompt_message=$1
+    local input_variable_name=$2
+
+    if [ -t 0 ]; then
+        # stdin is connected to a terminal
+        read -r -p "$prompt_message" "$input_variable_name"
+    else
+        # stdin is not connected to a terminal, use /dev/tty
+        read -r -p "$prompt_message" "$input_variable_name" < /dev/tty
+    fi
+}
+
 if [ "$hasMnemonic" == "yes" ]; then
     echo "Using default wallet name: $walletName"
     echo "Enter your mnemonic: "
