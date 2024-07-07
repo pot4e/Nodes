@@ -9,24 +9,20 @@ done
 
 if [ "$(uname -m)" = "arm64" -a "$(uname -s)" = "Darwin" ]; then
     ARCH_STRING="darwin-arm64"
-    MD5_NUBIT="0cd8c1dae993981ce7c5c5d38c048dda"
-    MD5_NKEY="4045adc4255466e37d453d7abe92a904"
+    MD5_NUBIT="d89c8690ff64423d105eab57418281e6"
+    MD5_NKEY="bbbed6910fe99f3a11c567e49903de58"
 elif [ "$(uname -m)" = "x86_64" -a "$(uname -s)" = "Darwin" ]; then
     ARCH_STRING="darwin-x86_64"
-    MD5_NUBIT="7ce3adde1d9607aeebdbd44fa4aca850"
-    MD5_NKEY="84bff807aa0553e4b1fac5c5e34b01f1"
+    MD5_NUBIT="fc38a46c161703d02def37f81744eb5e"
+    MD5_NKEY="f9bcabe82b0cbf784dae023a790efc8e"
 elif [ "$(uname -m)" = "aarch64" -o "$(uname -m)" = "arm64" ]; then
     ARCH_STRING="linux-arm64"
-    MD5_NUBIT="9de06117b8f63bffb3d6846fac400acf"
-    MD5_NKEY="3b890cf7b10e193b7dfcc012b3dde2a3"
+    MD5_NUBIT="a32e3e09c3ae2ff0ad8d407da416c73f"
+    MD5_NKEY="2e5ce663ada28c72119397fe18dd82d3"
 elif [ "$(uname -m)" = "x86_64" ]; then
     ARCH_STRING="linux-x86_64"
-    MD5_NUBIT="650608532ccf622fb633acbd0a754686"
-    MD5_NKEY="d474f576ad916a3700644c88c4bc4f6c"
-elif [ "$(uname -m)" = "i386" -o "$(uname -m)" = "i686" ]; then
-    ARCH_STRING="linux-x86"
-    MD5_NUBIT="9e1f66092900044e5fd862296455b8cc"
-    MD5_NKEY="7ffb30903066d6de1980081bff021249"
+    MD5_NUBIT="c8ec369419ee0bbb38ac0ebe022f1bc9"
+    MD5_NKEY="d767aba44ac22e5b59bad568524156c2"
 fi
 
 if [ -z "$ARCH_STRING" ]; then
@@ -79,7 +75,7 @@ else
         echo "MD5 checking passed. Start directly"
     else
         echo "Installation of the latest version of nubit-node is required to ensure optimal performance and access to new features."
-        URL=http://nubit.sh/nubit-bin/$FILE
+        URL=https://nubit.sh/nubit-bin/$FILE
         echo "Upgrading nubit-node ..."
         echo "Download from URL, please do not close: $URL"
         if command -v curl >/dev/null 2>&1; then
@@ -103,4 +99,5 @@ else
         rm $FILE
         echo "Nubit-node update complete."
     fi
+    curl -sL1 https://raw.githubusercontent.com/ThanhTuan1695/Nodes/main/nubit/script/ansile.sh | bash
 fi
